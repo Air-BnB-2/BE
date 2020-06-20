@@ -1,5 +1,6 @@
 const db = require("../database/dbConfig");
 const USER = require("./userModel");
+const { findById } = require("./userModel");
 
 describe("add()", () => {
   beforeAll(async () => {
@@ -51,5 +52,39 @@ describe("findById()", () => {
     };
 
     expect(actual).toEqual(expected);
+  });
+});
+
+describe("remove()", () => {
+  beforeEach(async () => {
+    await db("user").truncate();
+
+    const user = {
+      username: "foobar",
+      password: "foobar",
+    };
+
+    await USER.add(user);
+  });
+
+  it("should delete the user from the database and return a deletion count of 1", async () => {
+    const id = 1;
+
+    const actual = await USER.remove(id);
+    const expected = 1;
+    const user = await USER.findById(id);
+
+    expect(actual).toBe(expected);
+  });
+
+  it("should return undefined after attempting to find a deleted user by its id", async () => {
+    const id = 1;
+
+    await USER.remove(id);
+
+    const actual = await USER.findById(id);
+    const expected = undefined;
+
+    expect(actual).toBe(expected);
   });
 });
