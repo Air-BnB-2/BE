@@ -3,6 +3,7 @@ const db = require("../database/dbConfig");
 module.exports = {
   add,
   findById,
+  remove,
 };
 
 async function add(user) {
@@ -19,5 +20,5 @@ function findById(id) {
 }
 
 function remove(id) {
-  return null;
+  return db("user").del().where({ id });
 }
