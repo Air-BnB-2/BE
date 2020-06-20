@@ -1,7 +1,7 @@
 const db = require("../database/dbConfig");
 const USER = require("./userModel");
 
-describe("user", () => {
+describe("add()", () => {
   beforeAll(async () => {
     await db("user").truncate();
   });
