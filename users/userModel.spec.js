@@ -1,6 +1,5 @@
 const db = require("../database/dbConfig");
 const USER = require("./userModel");
-const { findById } = require("./userModel");
 
 describe("add()", () => {
   beforeAll(async () => {
@@ -14,6 +13,30 @@ describe("add()", () => {
     };
 
     const actual = await USER.add(user);
+    const expected = {
+      ...user,
+      id: 1,
+    };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("findBy()", () => {
+  beforeAll(async () => {
+    await db("user").truncate();
+  });
+
+  it("should find user by username", async () => {
+    const username = "foobar";
+    const user = {
+      username,
+      password: "foobar",
+    };
+
+    await USER.add(user);
+
+    const actual = await USER.findBy({ username });
     const expected = {
       ...user,
       id: 1,
