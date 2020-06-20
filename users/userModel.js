@@ -1,7 +1,9 @@
 const db = require("../database/dbConfig");
+const { xssFilter } = require("helmet");
 
 module.exports = {
   add,
+  findBy,
   findById,
   remove,
 };
@@ -12,7 +14,7 @@ async function add(user) {
 }
 
 function findBy(filter) {
-  return null;
+  return db("user").where(filter).first();
 }
 
 function findById(id) {
