@@ -17,8 +17,8 @@ function findById(id) {
   return db("listing").first();
 }
 
-function findByUserId(userId) {
-  return null;
+function findByUserId(user_id) {
+  return db("listing").where({ user_id });
 }
 
 function edit(id) {
