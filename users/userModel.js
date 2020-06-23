@@ -1,5 +1,4 @@
 const db = require("../database/dbConfig");
-const { xssFilter } = require("helmet");
 
 module.exports = {
   add,
@@ -9,8 +8,8 @@ module.exports = {
 };
 
 async function add(user) {
-  const [id] = await db("user").insert(user);
-  return findById(id);
+  await db("user").insert(user);
+  return findBy(user);
 }
 
 function findBy(filter) {
