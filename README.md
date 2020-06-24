@@ -30,6 +30,53 @@ Note: all endpoints are prefixed with: https://airbnb2beckend.herokuapp.com/api/
     	- Returns an array of all listings belonging to the user (The id in the url is the user's id).
     	- Response Status: 200
 
+    -> POST '/:id/listings'
+    	- Returns the property_name and the optimal price
+    	- Response Status: 201
+    	- Request body
+				{ 
+  					property_name
+  					property_type
+  					amenities
+  					room_type
+  					accommodates
+  					bathrooms
+  					cancellation_policy
+  					cleaning_fee
+  					instant_bookable
+  					zipcode
+  					bedrooms
+  					beds 
+				}
+			notes: 
+			the properties of the above object must be in that order, feel free to copy paste. 'property_name' is a string. All other values are integers.
+			Property type (Drop down?):
+					1 = Apartment
+					2 = House
+					3 = Condominium
+					4 = Loft
+					5 = Townhouse
+					6 = Hostel
+			7 = OtherAmenities:
+			The sum of amenities that a property offers. I imagine check boxes for amenities offered would work here. 
+			If this is too much work, we can rework a model to not include this.Room type (Drop down?):
+					1 = Entire home/apartment
+					2 = Private room
+			3 = Shared roomAccommodates:
+			Number of guests the property accommodates.Bathrooms:
+			Number of bathrooms.Cancellation policy:
+					1 = Strict
+					2 = Moderate
+					3 = Flexible
+					4 = Super strict (30 days)
+			5 = Super strict (60 days)Instant bookable:
+					1 = No
+					2 = Yes
+			Zip Code:
+			Integer. Any 5 digit zip code that begins with "0" should be formatted as a 4 digit integer.Bedrooms:
+			Number of bedroomsBeds:
+			Number of **beds**
+
 ---
 
 ## How to setup local server
