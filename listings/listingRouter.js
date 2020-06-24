@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
   const listing = {
     ...req.body,
     user_id: req.user_id,
-    zipcode: zipcode.charAt(0) === "0" ? zipcode.substr(1) : zipcode,
+    zipcode: Number(zipcode),
   };
 
   await Listings.add(listing);
@@ -23,7 +23,10 @@ router.post("/", async (req, res) => {
 
   const formattedListing = listingArray.map((val) => val[1]);
 
-  res.status(201).json([formattedListing]);
+  res.status(201).json({
+    property_name,
+    optimal_price: 700,
+  });
 });
 
 router.put("/:id", async (req, res) => {
@@ -31,7 +34,7 @@ router.put("/:id", async (req, res) => {
   const { property_name, zipcode } = req.body;
   const updates = {
     ...req.body,
-    zipcode: zipcode.charAt(0) === "0" ? zipcode.substr(1) : zipcode,
+    zipcode: Number(zipcode),
   };
 
   const listing = await Listings.edit(updates, id);
