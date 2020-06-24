@@ -1,7 +1,4 @@
-exports.seed = function (knex) {
-  return knex("listing")
-    .truncate()
-    .then(function () {
-      return knex("user").truncate();
-    });
+exports.seed = async function (knex) {
+  await knex("listing").truncate();
+  await knex("user").truncate();
 };
