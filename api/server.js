@@ -13,7 +13,7 @@ server.use(cors());
 server.use(express.json());
 server.use("/api/auth", authRouter);
 server.use(
-  "/api/:id/listing",
+  "/api/:id/listings",
   restricted,
   (req, res, next) => {
     const { id } = req.params;

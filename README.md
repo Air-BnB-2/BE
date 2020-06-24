@@ -2,7 +2,7 @@
 
 ## Endpoints
 
-Note: all endpoints are prefixed with: https://airbnb2beckend.herokuapp.com/
+Note: all endpoints are prefixed with: https://airbnb2beckend.herokuapp.com/api/
 
 ---
 
@@ -19,6 +19,15 @@ Note: all endpoints are prefixed with: https://airbnb2beckend.herokuapp.com/
     	- Request body
           	  - username - required
           	  - password - required
+    	- Response Status: 200
+
+---
+---
+
+#### Listing Endpoints
+
+    -> GET '/:id/listings'
+    	- Returns an array of all listings belonging to the user (The id in the url is the user's id).
     	- Response Status: 200
 
 ---
