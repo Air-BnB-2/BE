@@ -9,8 +9,7 @@ module.exports = {
 };
 
 async function add(listing) {
-  const [id] = await db("listing").insert(listing);
-  return findById(id);
+  return db("listing").insert(listing);
 }
 
 function findById(id) {
