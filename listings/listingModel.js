@@ -20,10 +20,11 @@ function findByUserId(user_id) {
   return db("listing").where({ user_id });
 }
 
-function edit(id) {
-  return null;
+async function edit(updates, id) {
+  await db("listing").update(updates).where({ id });
+  return findById(id);
 }
 
 function remove(id) {
-  return null;
+  return db("listing").del().where({ id });
 }
