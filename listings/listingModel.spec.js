@@ -33,10 +33,7 @@ describe("add()", () => {
     };
 
     const actual = await LISTING.add(listing);
-    const expected = {
-      ...listing,
-      id: 1,
-    };
+    const expected = [1];
 
     expect(actual).toEqual(expected);
   });
