@@ -4,7 +4,14 @@ const Listings = require("../listings/listingModel");
 router.get("/", async (req, res) => {
   const userListings = await Listings.findByUserId(req.user_id);
 
-  res.status(200).json(userListings);
+  const response = userListings.map((listing) => {
+    return {
+      ...listing,
+      price: 700,
+    };
+  });
+
+  res.status(201).json(response);
 });
 
 router.post("/", async (req, res) => {
