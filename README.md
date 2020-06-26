@@ -36,40 +36,38 @@ Note: all endpoints are prefixed with: https://airbnb2beckend.herokuapp.com/api/
     	- Response Status: 201
     	- Request body
     			{
-
-property_name
-property_type
-amenities
-room_type
-accommodates
-bathrooms
-cancellation_policy
-cleaning_fee
-instant_bookable
-zipcode
-bedrooms
-beds
-}
+					   property_name
+					   property_type
+					   amenities
+					  room_type
+					  accommodates
+					  bathrooms
+					  cancellation_policy
+					  cleaning_fee
+					  instant_bookable
+					  zipcode
+					  bedrooms
+					  beds
+					}
 
     -> POST '/:id/listings'
     	- Returns the property_name and the optimal price
     	- Response Status: 201
     	- Request body
     			{
-
-property_name
-property_type
-amenities
-room_type
-accommodates
-bathrooms
-cancellation_policy
-cleaning_fee
-instant_bookable
-zipcode
-bedrooms
-beds
-}
+					   property_name
+					   property_type
+					   amenities
+					  room_type
+					  accommodates
+					  bathrooms
+					  cancellation_policy
+					  cleaning_fee
+					  instant_bookable
+					  zipcode
+					  bedrooms
+					  beds
+					}
 notes:
 the properties of the above object must be in that order, feel free to copy paste. 'property_name' is a string. All other values are integers.
 Property type (Drop down?):
