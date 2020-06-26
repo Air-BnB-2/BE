@@ -11,6 +11,16 @@ const listingRouter = require("../listings/listingRouter");
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
+
+server.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 server.use("/api/auth", authRouter);
 server.use(
   "/api/:id/listings",
